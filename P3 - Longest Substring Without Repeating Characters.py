@@ -31,17 +31,9 @@
 # 0 <= s.length <= 5 * 104
 # s consists of English letters, digits, symbols and spaces.
 
-
-
-
-# start = 0
-# maxSubString = ''
-
-# for char in str:
-
 class Solution:
-    def findLogestSubString(self, str):
-        maxLenght = 0
+    def findLongestSubString(self, str):
+        maxLength = 0
         start = 0
         charMap ={}
         
@@ -50,21 +42,20 @@ class Solution:
             if str[right] not in charMap or charMap[str[right]] < left:
                 charMap[str[right]] = right
 
-                currentLenght = right - left + 1
-                if currentLenght > maxLenght:
+                currentLength = right - left + 1
+                if currentLength > maxLength:
                     start = left
-                    maxLenght = currentLenght
-                # maxLenght = max(maxLenght, right - left + 1)
+                    maxLength = currentLength
             else:
                 left = charMap[str[right]] + 1
                 charMap[str[right]] = right    
 
         
 
-        return str[start:start+maxLenght]
+        return str[start:start+maxLength]
     
 solution = Solution()
-longestSubString = solution.findLogestSubString('abcbade')
+longestSubString = solution.findLongestSubString('abcdeaa')
 
 print(longestSubString)
 
